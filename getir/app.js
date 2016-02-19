@@ -1,9 +1,11 @@
 var _fs = require("fs");
 
-var app = {route:{}};
-app.route.root = function(req, res, next){
-   res.send("nö!");
-   next();
+var app = {};
+app.route = {
+   root: function(req, res, next){
+      res.send("nö!");
+      next();
+   }
 };
 
 // auto require & register routes
