@@ -2,7 +2,6 @@
    "dependencies": {
       "restify": "4.0.*",
       "restify-errors": "4.2.*",
-      "yay-couch": "1.*",
-      "memcached": "2.2.*"
+      "yay-couch": "1.*"
    }
 }
