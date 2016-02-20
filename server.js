@@ -1,13 +1,10 @@
 // import externals
 var _rest = require("restify");
-var _restErr = require("restify-errors");
+var _restError = require("restify-errors");
 
 // import internals
 var app = require("./getir/app.js");
 var util = require("./getir/util/util.js");
-
-var p = new app.Payload({a:1});
-console.log(p.pack())
 
 // server stuff
 var server = _rest.createServer();
