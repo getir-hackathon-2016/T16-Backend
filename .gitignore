@@ -1,3 +1,4 @@
 .tmp/
+.etc/
 nohup*
 node_modules/
