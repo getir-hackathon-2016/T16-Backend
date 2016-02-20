@@ -8,11 +8,15 @@ var User = require("../model/user.js");
 
 module.exports = function(req, res, next){
    var accessToken = req.header("X-Access-Token");
+   console.log(accessToken)
    appCache.getAccessData(function(err, data){
-      console.log(data)
+      // console.log(data)
+      // console.log(data.token)
+      // console.log(data.tokenEmail)
+      // console.log("%j", data.token = accessToken)
 
       // authorized?
-      if (!data.token || data.token !== accessToken) {
+      if (!data.token || !accessToken || data.token !== accessToken) {
          var error = appError.get("AUTHORIZATION", req);
          var pack  = new appPayload(null, error.code, error.text).pack();
          res.send(401, pack);
@@ -40,7 +44,7 @@ module.exports = function(req, res, next){
             next();
          } else {
             pack = new appPayload({
-               "id": data.doc._id,
+               "id": data.doc.id,
                "email": data.doc.email
             }).pack();
 
