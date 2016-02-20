@@ -1,5 +1,3 @@
-var _fs = require("fs");
-
 var app = {};
 
 app.auth = require("./app_auth.js");
