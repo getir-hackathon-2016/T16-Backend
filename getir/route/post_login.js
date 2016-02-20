@@ -46,7 +46,7 @@ module.exports = function(req, res, next){
       } else {
          var accessToken = appAuth.generateAccessToken();
          // keep access token in memo (expire?)
-         appCache.setAccessToken(accessToken, email);
+         appCache.setAccessData(accessToken, email);
          // pack payload
          pack = new appPayload({"access_token": accessToken}).pack();
 
