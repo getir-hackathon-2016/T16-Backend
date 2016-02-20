@@ -26,5 +26,6 @@ function isNone(input){
 module.exports = {
    trim: trim,
    extend: extend,
-   dig: dig
+   dig: dig,
+   isNone: isNone
 };
