@@ -3,6 +3,9 @@ var util = require("./../util/util.js");
 var appAuth = require("./../app_auth.js");
 
 module.exports = function(req, res, next){
+   // @debug
+   console.log(req.body)
+
    var username = util.trim(req.params.username);
    var password = util.trim(req.params.password);
    if (username == "" || req.params.password == "") {
