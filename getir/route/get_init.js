@@ -17,6 +17,7 @@ module.exports = function(req, res, next){
          return next();
       }
 
+      // find user if exists
       User.find(data.tokenEmail, function(stream, data){
          if (!stream.response.isStatusCode(200)) {
             console.log(stream.request.toString());
