@@ -1,20 +1,27 @@
 var error = {
    "UNKNOWN": {
-      "code": 1,
+      "code": 100,
       "text": {
          "en": "Unknown error.",
          "tr": "Tanımlanmamış hata."
       }
    },
+   "AUTHORIZATION": {
+      "code": 101,
+      "text": {
+         "en": "Unauthorized request.",
+         "tr": "Yetkisiz istek."
+      }
+   },
    "LOGIN_EMPTY": {
-      "code": 100,
+      "code": 200,
       "text": {
          "en": "Username/password couldn't be empty.",
          "tr": "Kullanıcı adı/şifre boş olamaz."
       }
    },
    "LOGIN_MATCH": {
-      "code": 101,
+      "code": 201,
       "text": {
          "en": "Username/password doesn't match.",
          "tr": "Kullanıcı adı/şifre uyuşmuyor."
