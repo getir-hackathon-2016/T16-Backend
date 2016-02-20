@@ -16,5 +16,7 @@ files.forEach(function(file){
    // use file name as route handler
    module.exports[fileName] = require(filePath);
 
-   console.log("Registering route: '%s' from '%s'.", fileName, filePath)
+   fileName = fileName.split("_")
+   console.log("Registering route: '%s /%s' from '%s'.",
+      fileName[0].toUpperCase(), fileName[1], filePath)
 });
