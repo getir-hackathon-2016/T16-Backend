@@ -27,7 +27,7 @@ var Cache = {
       });
    },
    removeAccessData: function(callback){
-      client.del("app.access", callback);
+      client.delete("app.access", callback);
    }
 };
 
