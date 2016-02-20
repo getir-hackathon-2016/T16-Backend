@@ -17,7 +17,7 @@ server.use(_rest.acceptParser(server.acceptable));
 
 // register routes
 server.get("/", app.Route.root);
-server.post("/login", app.Route.login);
+server.post("/login", app.Route.post_login);
 
 // listen!
 server.listen(3000, function(){
