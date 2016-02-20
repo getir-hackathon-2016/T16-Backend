@@ -10,6 +10,8 @@ var util = require("./getir/util/util.js");
 // }
 
 var server = restify.createServer();
+server.use(restify.bodyParser());
+server.use(restify.queryParser());
 server.use(restify.fullResponse());
 server.use(restify.gzipResponse());
 server.use(restify.authorizationParser());
