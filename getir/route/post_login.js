@@ -2,7 +2,7 @@ var util = require("../util/util.js");
 var appAuth = require("../app_auth.js");
 var appPayload = require("../app_payload.js");
 var appError = require("../app_error.js");
-var appRedis = require("../app_redis.js");
+var appCache = require("../app_cache.js");
 
 var User = require("../model/user.js");
 
@@ -46,7 +46,7 @@ module.exports = function(req, res, next){
       } else {
          var accessToken = appAuth.generateAccessToken();
          // keep access token in memo (expire?)
-         appRedis.setAccessToken(accessToken);
+         appCache.setAccessToken(accessToken, email);
          // pack payload
          pack = new appPayload({"access_token": accessToken}).pack();
 
