@@ -1,3 +1,5 @@
+var _fs = require("fs");
+
 module.exports = {
    root: function(req, res, next){
       res.send("nö!");
