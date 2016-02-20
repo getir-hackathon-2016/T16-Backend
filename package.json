@@ -1,6 +1,7 @@
 {
    "dependencies": {
       "restify": "4.0.*",
-      "restify-errors": "4.2.*"
+      "restify-errors": "4.2.*",
+      "mongoose": "4.4.0"
    }
 }
