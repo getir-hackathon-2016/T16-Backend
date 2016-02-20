@@ -21,8 +21,6 @@ module.exports = function(req, res, next){
       return next();
    }
 
-   // email = "krm.gns@gmail.com" // @tmp
-
    User.find(email, function(stream, data){
       if (!stream.response.isStatusCode(200)) {
          console.log(stream.request.toString());
