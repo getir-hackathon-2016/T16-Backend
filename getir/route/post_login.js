@@ -54,16 +54,16 @@ module.exports = function(req, res, next){
          var pack  = new appPayload(null, error.code, error.text).pack();
 
          res.send(404, pack);
-         next();
+         return next();
       } else {
          var accessToken = appAuth.generateAccessToken();
          // keep access token in memo (expire?)
          appCache.setAccessData(deviceId, accessToken, email);
          // pack payload
-         pack = new appPayload({"access_token": accessToken}).pack();
+         var pack = new appPayload({"access_token": accessToken}).pack();
 
          res.send(200, pack);
-         next();
+         return next();
       }
    });
 };
