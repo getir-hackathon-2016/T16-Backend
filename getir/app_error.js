@@ -6,8 +6,15 @@ var error = {
          "tr": "Tanımlanmamış hata."
       }
    },
-   "AUTHORIZATION": {
+   "MISSING_HEADER": {
       "code": 101,
+      "text": {
+         "en": "Missing header.",
+         "tr": "Eksik başlık."
+      }
+   },
+   "AUTHORIZATION": {
+      "code": 102,
       "text": {
          "en": "Unauthorized request.",
          "tr": "Yetkisiz istek."
