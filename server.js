@@ -18,7 +18,7 @@ server.use(restify.authorizationParser());
 server.use(restify.acceptParser(server.acceptable));
 
 server.get("/", app.route.root);
-server.get("/login", app.route.login);
+server.post("/login", app.route.login);
 
 server.listen(3000, function(){
    console.log("Server listening at: %s.", server.url);
