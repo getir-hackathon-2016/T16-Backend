@@ -17,6 +17,7 @@ server.use(restify.acceptParser(server.acceptable));
 
 // register routes
 server.get("/", app.Route.root);
+server.get("/init", app.Route.get_init);
 server.post("/login", app.Route.post_login);
 
 // listen!
