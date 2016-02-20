@@ -38,21 +38,23 @@ var error = {
 
 // @todo Must be improved.
 var get = function(key, req){
-   var lang = req.header("Accept-Language", "en");
-   if (lang == "en" || lang == "tr") {
-      for (var k in error) {
-         if (k == key && error.hasOwnProperty(k)) {
-            return {
-               "code": error[k]["code"],
-               "text": error[k]["text"][lang]
-            };
-         }
-      }
+   var lang = req.header("Accept-Language");
+   if (lang != "en" || lang != "tr") {
+      lang = "en";
+   }
 
-      return {
-         "code": error.UNKNOWN.code,
-         "text": error.UNKNOWN.text[lang]
+   for (var k in error) {
+      if (k == key && error.hasOwnProperty(k)) {
+         return {
+            "code": error[k]["code"],
+            "text": error[k]["text"][lang]
+         };
       }
+   }
+
+   return {
+      "code": error.UNKNOWN.code,
+      "text": error.UNKNOWN.text[lang]
    }
 };
 
