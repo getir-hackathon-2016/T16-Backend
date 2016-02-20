@@ -18,7 +18,7 @@ var Cache = {
       console.log("Memcache set:", data);
       client.set("app.access"+ deviceId, data, TTL, callback);
    },
-   getAccessData: function(callback){
+   getAccessData: function(deviceId, callback){
       client.get("app.access"+ deviceId, function(err, data){
          console.log("Memcache get:", data);
          try {
@@ -27,7 +27,7 @@ var Cache = {
          callback(err, data || {});
       });
    },
-   removeAccessData: function(callback){
+   removeAccessData: function(deviceId, callback){
       client.delete("app.access"+ deviceId, callback);
    }
 };
