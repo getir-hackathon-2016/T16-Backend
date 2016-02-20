@@ -8,7 +8,7 @@ var util = require("./getir/util/util.js");
 
 // server stuff
 var server = _rest.createServer();
-server.use(_rest.bodyParser());
+server.use(_rest.bodyParser({mapParams: true}));
 server.use(_rest.queryParser());
 server.use(_rest.fullResponse());
 server.use(_rest.gzipResponse());
