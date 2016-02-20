@@ -10,6 +10,17 @@ module.exports = function(req, res, next){
    // @debug
    console.log(req.body)
 
+   var deviceId = req.header("X-Device-Id");
+   console.log("X-Device-Id:", deviceId);
+   if (util.isNone(deviceId)) {
+      // fill payload error
+      var error = appError.get("MISSING_HEADER", req);
+      var pack  = new appPayload(null, error.code, error.text).pack();
+
+      res.send(400, pack);
+      return next();
+   }
+
    var email = util.trim(req.params.email);
    var password = util.trim(req.params.password);
    if (email == "" || password == "") {
@@ -22,6 +33,9 @@ module.exports = function(req, res, next){
    }
 
    User.find(email, function(stream, data){
+      // console.log(stream.request.toString());
+      // console.log(stream.response.toString());
+
       if (!stream.response.isStatusCode(200)) {
          console.log(stream.request.toString());
          console.log(stream.response.toString());
@@ -44,7 +58,7 @@ module.exports = function(req, res, next){
       } else {
          var accessToken = appAuth.generateAccessToken();
          // keep access token in memo (expire?)
-         appCache.setAccessData(accessToken, email);
+         appCache.setAccessData(deviceId, accessToken, email);
          // pack payload
          pack = new appPayload({"access_token": accessToken}).pack();
 
