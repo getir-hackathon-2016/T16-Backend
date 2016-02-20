@@ -15,7 +15,7 @@ function dig(object, key) {
    var keys = key.split(".");
    var key  = keys.shift();
    return (keys.length)
-      ? this.dig(keys.join("."), object[key])
+      ? dig(keys.join("."), object[key])
       : object[key];
 }
 
