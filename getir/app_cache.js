@@ -9,17 +9,18 @@ client.connect();
 var TTL = 86400;
 
 var Cache = {
-   setAccessData: function(token, tokenEmail, callback){
+   setAccessData: function(deviceId, token, tokenEmail, callback){
       var data = JSON.stringify({
+         "deviceId": deviceId,
          "token": token,
-         "tokenEmail": tokenEmail
+         "tokenEmail": tokenEmail,
       });
-      console.log("Memcache set:", data)
-      client.set("app.access", data, TTL, callback);
+      console.log("Memcache set:", data);
+      client.set("app.access"+ deviceId, data, TTL, callback);
    },
    getAccessData: function(callback){
-      client.get("app.access", function(err, data){
-         console.log("Memcache get:", data)
+      client.get("app.access"+ deviceId, function(err, data){
+         console.log("Memcache get:", data);
          try {
             data = JSON.parse(data)
          } catch(e) {}
@@ -27,7 +28,7 @@ var Cache = {
       });
    },
    removeAccessData: function(callback){
-      client.delete("app.access", callback);
+      client.delete("app.access"+ deviceId, callback);
    }
 };
 
