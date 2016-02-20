@@ -37,11 +37,11 @@ var Payload = klas.create("Payload", {
    pack: function(){
       var $this = this;
       return {
-         "data": $this.data,
          "error": {
             "code": $this.errorCode,
             "text": $this.errorText
          },
+         "data": $this.data
       };
    }
 });
