@@ -4,6 +4,14 @@ function trim(input) {
       ? (""+ input).trim() : "";
 }
 
+function extend(target, source) {
+   for (var i in source) {
+      target[i] = source[i];
+   }
+   return target;
+}
+
 module.exports = {
-   trim: trim
+   trim: trim,
+   extend: extend
 };
