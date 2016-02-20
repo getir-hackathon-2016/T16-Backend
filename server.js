@@ -1,19 +1,19 @@
 // import externals
-var _rest = require("restify");
-var _restError = require("restify-errors");
+var restify = require("restify");
+var restifyErrors = require("restify-errors");
 
 // import internals
 var app = require("./getir/app.js");
 var util = require("./getir/util/util.js");
 
 // server stuff
-var server = _rest.createServer();
-server.use(_rest.bodyParser({mapParams: true}));
-server.use(_rest.queryParser());
-server.use(_rest.fullResponse());
-server.use(_rest.gzipResponse());
-server.use(_rest.authorizationParser());
-server.use(_rest.acceptParser(server.acceptable));
+var server = restify.createServer();
+restify.defaultResponseHeaders = false;
+server.use(restify.bodyParser({mapParams: true}));
+server.use(restify.queryParser());
+server.use(restify.gzipResponse());
+server.use(restify.authorizationParser());
+server.use(restify.acceptParser(server.acceptable));
 
 // register routes
 server.get("/", app.Route.root);
