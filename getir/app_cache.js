@@ -6,23 +6,27 @@ var client = new Memcached();
 var TTL = 86400;
 
 var Cache = {
-   setAccessToken: function(accessToken, accessTokenEmail, callback){
+   setAccessData: function(token, tokenEmail, callback){
       var data = JSON.stringify({
-         "accessToken": accessToken,
-         "accessTokenEmail": accessTokenEmail
-      };
+         "token": token,
+         "tokenEmail": tokenEmail
+      });
       // WTF?
       // https://github.com/3rd-Eden/memcached
       // value: Mixed Either a buffer, JSON, number or string that you want to store.
-      client.set("app.accessToken", data), TTL, callback);
+      client.set("app.access", data, TTL, callback);
    },
-   getAccessToken: function(callback){
-      client.get("app.accessToken", function(err, data){
-         callback(err, JSON.parse(data))
+   getAccessData: function(callback){
+      client.get("app.access", function(err, data){
+         data = data || "{}"
+         try {
+            data = JSON.parse(data)
+         } catch(e) {}
+         callback(err, data);
       });
    },
-   removeAccessToken: function(accessToken, callback){
-      client.delete("app.accessToken", callback);
+   removeAccessData: function(callback){
+      client.del("app.access", callback);
    }
 };
 
