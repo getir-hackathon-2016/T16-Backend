@@ -9,6 +9,8 @@ var User = require("../model/user.js");
 module.exports = function(req, res, next){
    var accessToken = req.header("X-Access-Token");
    appCache.getAccessData(function(err, data){
+      console.log(data)
+
       // authorized?
       if (!data.token || data.token !== accessToken) {
          var error = appError.get("AUTHORIZATION", req);
