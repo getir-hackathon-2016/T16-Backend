@@ -9,7 +9,7 @@ var util = require("./getir/util/util.js");
 // server stuff
 var server = restify.createServer();
 restify.defaultResponseHeaders = false;
-server.use(restify.bodyParser({mapParams: true}));
+server.use(restify.bodyParser({mapParams: true})); // required for json bodies
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 server.use(restify.authorizationParser());
