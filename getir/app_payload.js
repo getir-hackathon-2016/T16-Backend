@@ -13,12 +13,15 @@ var Payload = klas.create("Payload", {
 
    setData: function(data){
       this.data = data;
+      return this;
    },
    setErrorCode: function(errorCode){
       this.errorCode = errorCode;
+      return this;
    },
    setErrorText: function(errorText){
       this.errorText = errorText;
+      return this;
    },
 
    getData: function(){
