@@ -19,6 +19,10 @@ function dig(object, key) {
       : object[key];
 }
 
+function isNone(input){
+   return (input == null || input.trim() === "");
+}
+
 module.exports = {
    trim: trim,
    extend: extend,
