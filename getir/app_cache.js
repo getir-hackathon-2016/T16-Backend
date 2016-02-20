@@ -14,12 +14,12 @@ var Cache = {
          "token": token,
          "tokenEmail": tokenEmail
       });
-      console.log(data)
+      console.log("Memcache set:", data)
       client.set("app.access", data, TTL, callback);
    },
    getAccessData: function(callback){
       client.get("app.access", function(err, data){
-         console.log(data)
+         console.log("Memcache get:", data)
          try {
             data = JSON.parse(data)
          } catch(e) {}
