@@ -6,7 +6,11 @@ var Payload = klas.create("Payload", {
    errorText: "",
 
    __init__: function(data, errorCode, errorText){
-      this.data = data || {};
+      if (data === undefined) {
+         data = null;
+      }
+      this.data = data;
+
       this.errorCode = errorCode || 0;
       this.errorText = errorText || "";
    },
