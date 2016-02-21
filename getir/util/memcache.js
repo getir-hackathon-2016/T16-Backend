@@ -257,7 +257,7 @@ Client.prototype.determine_reply_handler = function (buffer){
    }
 
    // call the handler for the current message type
-   var type = this.callbacks[0].type;
+   var type = this.callbacks[0] && this.callbacks[0].type;
    if (type){
       return this['handle_' + type](buffer);
    }
