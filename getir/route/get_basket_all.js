@@ -53,10 +53,11 @@ module.exports = function(req, res, next){
          }
          data = null;
          if (items.length) {
-            data = {};
-            data.items = items;
-            data.totalItem = items.length;
-            data.totalAmount = totalAmount;
+            data = {
+               "items": items,
+               "totalItem": items.length,
+               "totalAmount": totalAmount
+            };
          }
 
          var payload = new Payload(data);
