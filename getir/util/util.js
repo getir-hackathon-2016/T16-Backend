@@ -23,9 +23,20 @@ function isNone(input){
    return (input == null || input.trim() === "");
 }
 
+function CacheClient(){
+   var memcache = require("./memcache.js");
+   var client = new memcache.Client();
+   client.on("connect", function(){
+      console.log("Connected to Memcache.");
+   });
+   client.connect();
+   return client;
+}
+
 module.exports = {
    trim: trim,
    extend: extend,
    dig: dig,
-   isNone: isNone
+   isNone: isNone,
+   CacheClient: CacheClient
 };
