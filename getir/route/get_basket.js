@@ -20,6 +20,16 @@ module.exports = function(req, res, next){
       return next();
    }
 
+   var id = util.trim(req.params.id);
+   if (util.isNone(id)) {
+      // fill payload error
+      var error = appError.get("MISSING_PARAM", req);
+      var pack  = new appPayload(null, error.code, error.text).pack();
+
+      res.send(400, pack);
+      return next();
+   }
+
    appCache.getAccessData(deviceId, function(err, data){
       // authorized?
       if (!data.token || !accessToken || data.token !== accessToken) {
@@ -30,33 +40,22 @@ module.exports = function(req, res, next){
          return next();
       }
 
-      Basket.getItemAll(function(err, data){
-         var items = [];
-         var totalItem = 0;
-         var totalPrice = 0.00;
-         if (data.rows) {
-            data.rows.forEach(function(row){
-               if (row.doc
-                  && row.doc.doc_type == "basket_item"
-                  && row.doc.access_token == accessToken
-               ) {
-                  items.push({
-                     "id": row.doc._id,
-                     "name": row.doc.name,
-                     "price": row.doc.price,
-                     "image": row.doc.image,
-                     "qty": row.doc.qty
-                  });
-                  totalPrice += row.doc.price * row.doc.qty;
-               }
-            });
-         }
-         data = null;
-         if (items.length) {
-            data = {};
-            data.items = items;
-            data.totalItem = items.length;
-            data.totalPrice = totalPrice;
+      Basket.getItem(id, function(err, data){
+         var row = data;
+         if (row && row.doc) {
+            data = {
+               "item": {
+                  "id": row.doc._id,
+                  "name": row.doc.name,
+                  "price": row.doc.price,
+                  "image": row.doc.image,
+                  "qty": row.doc.qty
+               },
+            };
+            data.totalItem = 1;
+            data.totalAmount = row.doc.price * row.doc.qty;
+         } else {
+            data = null;
          }
 
          var payload = new Payload(data);

@@ -48,7 +48,8 @@ server.post("/login", app.Route.post_login);
 server.get("/product/:id", app.Route.get_product);
 server.get("/product-all", app.Route.get_product_all);
 
-server.get("/basket", app.Route.get_basket);
+server.get("/basket/:id", app.Route.get_basket);
+server.get("/basket-all", app.Route.get_basket_all);
 
 // listen!
 server.listen(3000, function(){
