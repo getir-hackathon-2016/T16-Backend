@@ -21,11 +21,9 @@ files.forEach(function(file){
    // use file name as route handler
    module.exports[fileName] = require(filePath);
 
-   fileName = fileName.split("_", 2);
+   var tmp = fileName.split("_");
    console.log("Registering route: '%s /%s' from '%s'.",
-      // do: get_productList => GET
-      // do: productList     => product-list
-      fileName[0].toUpperCase(), fileName[1].replace(/[A-Z]/g, function(char){
-         return "-"+ char.toLowerCase();
-      }), filePath);
+      // do: get_product_list => GET
+      // do: product_list     => product-list
+      tmp[0].toUpperCase(), tmp.slice(1).join("-"), filePath);
 });
