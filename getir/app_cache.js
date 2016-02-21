@@ -16,10 +16,10 @@ var Cache = {
          "tokenEmail": tokenEmail,
       });
       console.log("Memcache set:", data);
-      client.set("app.access"+ deviceId, data, TTL, callback);
+      client.set("app.access."+ deviceId, data, TTL, callback);
    },
    getAccessData: function(deviceId, callback){
-      client.get("app.access"+ deviceId, function(err, data){
+      client.get("app.access."+ deviceId, function(err, data){
          console.log("Memcache get:", data);
          try {
             data = JSON.parse(data)
@@ -28,7 +28,7 @@ var Cache = {
       });
    },
    removeAccessData: function(deviceId, callback){
-      client.delete("app.access"+ deviceId, callback);
+      client.delete("app.access."+ deviceId, callback);
    }
 };
 
