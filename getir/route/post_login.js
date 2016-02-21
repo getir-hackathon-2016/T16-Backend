@@ -32,10 +32,10 @@ module.exports = function(req, res, next){
       return next();
    }
 
+   // find user
    User.find(email, function(stream, data){
       // console.log(stream.request.toString());
       // console.log(stream.response.toString());
-
       if (!stream.response.isStatusCode(200)) {
          console.log(stream.request.toString());
          console.log(stream.response.toString());

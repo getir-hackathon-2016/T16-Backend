@@ -19,6 +19,7 @@ server.use(restify.acceptParser(server.acceptable));
 server.get("/", app.Route.root);
 server.get("/init", app.Route.get_init);
 server.post("/login", app.Route.post_login);
+server.get("/product-list", app.Route.get_product_list);
 
 // listen!
 server.listen(3000, function(){
