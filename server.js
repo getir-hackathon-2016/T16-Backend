@@ -49,6 +49,7 @@ server.get("/product/:id", app.Route.get_product);
 server.get("/product-all", app.Route.get_product_all);
 
 server.get("/basket/:id", app.Route.get_basket);
+server.post("/basket", app.Route.post_basket);
 server.get("/basket-all", app.Route.get_basket_all);
 
 // listen!
