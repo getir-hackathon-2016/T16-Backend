@@ -20,16 +20,16 @@ Accept: application/json
 // en or tr, default=en
 Accept-Language: en
 
-// unique device id that used all the time
+// device id that used all the time (unique)
 X-Device-Id: xxx
 
-// unique access id
+// access token (unique)
 X-Access-Token: xxx
 ```
 
 ## Endpoints
 
-Notice: Excepting `/login`, all endpoints require `X-Access-Token` header with a valid access token provided by service. Also all endpoints require `X-Device-Id` header with a unique value that used generated once and used for each request.
+Notice: Excepting `/login`, all endpoints require `X-Access-Token` header with a valid access token provided by service. And all endpoints require `X-Device-Id` header with a unique value that used generated once and used for each request. Also only JSON data accepted as body data.
 
 ### Authorization
 
@@ -37,10 +37,10 @@ Notice: Excepting `/login`, all endpoints require `X-Access-Token` header with a
 
 #### Request Parameters
 
-| Name | Type | Required | Description |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Name     | Type    | Required  | Description |
+| -------- | ------- | --------- | ----------- |
+| email    | String  | Yes       | Client's email address. |
+| password | String  | Yes       | -           |
 
 
 
