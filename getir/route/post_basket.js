@@ -20,15 +20,6 @@ module.exports = function(req, res, next){
       return next();
    }
 
-   // {
-   //    "id": "0x001",
-   //    "doc_type": "basket_item",
-   //    "name": "Su",
-   //    "price": 0.75,
-   //    "image": "http://qeremy.com/getir/img/0x001.jpg",
-   //    "qty": 1
-   // }
-
    var id    = util.trim(req.params.id);
    var name  = util.trim(req.params.name);
    var price = parseFloat(req.params.price);
@@ -60,7 +51,7 @@ module.exports = function(req, res, next){
          "name": name,
          "price": price,
          "image": image,
-         "qty": 1
+         "qty": qty
       };
 
       Basket.addItem(item, function(stream, data){
