@@ -16,7 +16,8 @@ server.use(restify.authorizationParser());
 server.use(restify.acceptParser(server.acceptable));
 
 // @debug stream logger
-server.pre(function(req, res, next){
+server.on("after", function(req, res, route, err){
+   // request stream
    console.log("%s %s", req.method, req.url);
    for (var name in req.headers) {
       console.log("%s%s: %s", name.substring(0,1).toUpperCase(),
@@ -27,11 +28,14 @@ server.pre(function(req, res, next){
    console.log("");
    if (req.body) {
       if (typeof req.body == "object") {
-         console.log("%s", JSON.stringify(req.body));
+         console.log(JSON.stringify(req.body));
       } else {
-         console.log("%s", req.body);
+         console.log(req.body);
       }
    }
+   console.log("");
+   // response stream
+   console.log(res._header, res._data || "");
 });
 
 // register routes
