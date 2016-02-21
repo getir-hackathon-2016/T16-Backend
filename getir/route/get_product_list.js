@@ -32,8 +32,8 @@ module.exports = function(req, res, next){
 
       // find all products
       Product.findAll({}, function(stream, data){
-         console.log(stream.request.toString());
-         console.log(stream.response.toString());
+         // console.log(stream.request.toString());
+         // console.log(stream.response.toString());
          if (!stream.response.isStatusCode(200)) {
             console.log(stream.request.toString());
             console.log(stream.response.toString());
