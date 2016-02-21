@@ -45,9 +45,12 @@ server.on("after", function(req, res, route, err){
 server.get("/", app.Route.root);
 server.get("/init", app.Route.get_init);
 server.post("/login", app.Route.post_login);
+
+// product
 server.get("/product/:id", app.Route.get_product);
 server.get("/product-all", app.Route.get_product_all);
 
+// basket
 server.get("/basket/:id", app.Route.get_basket);
 server.post("/basket", app.Route.post_basket);
 server.get("/basket-all", app.Route.get_basket_all);

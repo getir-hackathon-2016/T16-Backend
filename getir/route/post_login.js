@@ -15,7 +15,7 @@ module.exports = function(req, res, next){
    if (util.isNone(deviceId)) {
       // fill payload error
       var error = appError.get("MISSING_HEADER", req);
-      var palpack = new Payload(null, error.code, error.text);
+      var payload = new Payload(null, error.code, error.text);
 
       res.send(400, payload.pack());
       return next();
@@ -26,7 +26,7 @@ module.exports = function(req, res, next){
    if (email == "" || password == "") {
       // fill payload error
       var error = appError.get("LOGIN_EMPTY", req);
-      var palpack = new Payload(null, error.code, error.text);
+      var payload = new Payload(null, error.code, error.text);
 
       res.send(400, payload.pack());
       return next();
@@ -42,7 +42,7 @@ module.exports = function(req, res, next){
 
          // fill payload error
          var error = appError.get("", req);
-         var palpack = new Payload(null, error.code, error.text);
+         var payload = new Payload(null, error.code, error.text);
 
          res.send(500, payload.pack());
          return next();
@@ -51,7 +51,7 @@ module.exports = function(req, res, next){
       if (data == null || email != data.doc.email || password != data.doc.password) {
          // fill payload error
          var error = appError.get("LOGIN_MATCH", req);
-         var palpack = new Payload(null, error.code, error.text);
+         var payload = new Payload(null, error.code, error.text);
 
          res.send(404, payload.pack());
          return next();
@@ -60,7 +60,7 @@ module.exports = function(req, res, next){
          // keep access token in memo (expire?)
          appCache.setAccessData(deviceId, accessToken, email);
          // pack payload
-         var palpack= new Payload({"access_token": accessToken});
+         var payload= new Payload({"access_token": accessToken});
 
          res.send(200, payload.pack());
          return next();
