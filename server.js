@@ -45,7 +45,8 @@ server.on("after", function(req, res, route, err){
 server.get("/", app.Route.root);
 server.get("/init", app.Route.get_init);
 server.post("/login", app.Route.post_login);
-server.get("/product-list", app.Route.get_product_all);
+server.get("/product/:id", app.Route.get_product);
+server.get("/product-all", app.Route.get_product_all);
 
 // listen!
 server.listen(3000, function(){
