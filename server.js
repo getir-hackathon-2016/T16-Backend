@@ -48,6 +48,8 @@ server.post("/login", app.Route.post_login);
 server.get("/product/:id", app.Route.get_product);
 server.get("/product-all", app.Route.get_product_all);
 
+server.get("/basket", app.Route.get_basket);
+
 // listen!
 server.listen(3000, function(){
    console.log("Server listening at: %s.", server.url);
