@@ -20,6 +20,13 @@ var error = {
          "tr": "Yetkisiz istek."
       }
    },
+   "NO_ROUTE": {
+      "code": 103,
+      "text": {
+         "en": "No route found.",
+         "tr": "Yol bulunamadı."
+      }
+   },
    "LOGIN_EMPTY": {
       "code": 200,
       "text": {
