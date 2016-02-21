@@ -8,9 +8,28 @@ This document shows all rescource URL's that implemented and responded by the se
 
 `http://qeremy.com:3000`
 
+## Request Headers
+
+Expected and implemented headers are;
+
+```
+// content type for send/recv acts
+Content-Type: application/json
+Accept: application/json
+
+// en or tr, default=en
+Accept-Language: en
+
+// unique device id that used all the time
+X-Device-Id: xxx
+
+// unique access id
+X-Access-Token: xxx
+```
+
 ## Endpoints
 
-Notice: Excepting `/login`, all endpoints require `X-Access-Token` header with a valid access token provided by service. Also all endpoints require `X-Device-Id` header with a unique ID.
+Notice: Excepting `/login`, all endpoints require `X-Access-Token` header with a valid access token provided by service. Also all endpoints require `X-Device-Id` header with a unique value that used generated once and used for each request.
 
 ### Authorization
 
