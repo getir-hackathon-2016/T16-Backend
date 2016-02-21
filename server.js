@@ -20,6 +20,9 @@ server.on("after", function(req, res, route, err){
    // request stream
    console.log("\r\n%s %s", req.method, req.url);
    for (var name in req.headers) {
+      if (name == "user-agent") {
+         continue;
+      }
       console.log("%s%s: %s", name.substring(0,1).toUpperCase(),
          name.substring(1).replace(/-[a-z]/g, function(char){
             return char.toUpperCase();
