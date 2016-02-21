@@ -1,7 +1,7 @@
 var util = require("./util/util.js");
 var client = util.CacheClient();
 
-// time to live in secs
+// time to live
 var TTL = 86400;
 
 var Cache = {
