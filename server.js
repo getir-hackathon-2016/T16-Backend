@@ -11,7 +11,7 @@ var server = restify.createServer();
 restify.defaultResponseHeaders = false;
 server.use(restify.bodyParser({mapParams: true})); // required for json bodies
 server.use(restify.queryParser());
-server.use(restify.gzipResponse());
+// server.use(restify.gzipResponse());
 server.use(restify.authorizationParser());
 server.use(restify.acceptParser(server.acceptable));
 
