@@ -23,7 +23,7 @@ files.forEach(function(file){
 
    var tmp = fileName.split("_");
    console.log("Registering route: '%s /%s' from '%s'.",
-      // do: get_product_list => GET
-      // do: product_list     => product-list
+      // do: get_product_all => GET
+      // do: product_list    => product-list
       tmp[0].toUpperCase(), tmp.slice(1).join("-"), filePath);
 });
