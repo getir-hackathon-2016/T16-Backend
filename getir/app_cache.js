@@ -1,7 +1,7 @@
 var util = require("./util/util.js");
 var client = util.CacheClient();
 
-// time to live in secs (1 day)
+// time to live in secs
 var TTL = 86400;
 
 var Cache = {
@@ -12,7 +12,7 @@ var Cache = {
          "tokenEmail": tokenEmail,
       });
       console.log("Memcache set:", data);
-      client.set("app.access."+ deviceId, data, TTL, callback);
+      client.set("app.access."+ deviceId, data, callback, TTL);
    },
    getAccessData: function(deviceId, callback){
       client.get("app.access."+ deviceId, function(err, data){
