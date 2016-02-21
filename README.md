@@ -10,6 +10,18 @@ This document shows the all rescource URL's that implemented and responded only 
 
 ## Endpoints
 
+Notice: Excepting `/login`, all endpoints require `X-Access-Token` header with a valid access token provided by service. Also all endpoints require `X-Device-Id` header with a unique ID.
+
 ### Authorization
+
+`GET /login`
+
+#### Request Parameters
+
+| Name | Type | Required | Description |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 
 
