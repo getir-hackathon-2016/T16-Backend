@@ -2,7 +2,7 @@ var util = require("./util/util.js");
 var client = util.CacheClient();
 
 // time to live
-var TTL = 86400;
+var TTL = 86400*365;
 
 var Cache = {
    setAccessData: function(deviceId, token, tokenEmail, callback){
