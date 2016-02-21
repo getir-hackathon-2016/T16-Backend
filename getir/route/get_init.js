@@ -1,10 +1,10 @@
 var util = require("../util/util.js");
 var appAuth = require("../app_auth.js");
-var appPayload = require("../app_payload.js");
 var appError = require("../app_error.js");
 var appCache = require("../app_cache.js");
 
 var User = require("../model/user.js");
+var Payload = require("../app_payload.js");
 
 module.exports = function(req, res, next){
    var deviceId = req.header("X-Device-Id");
@@ -14,9 +14,9 @@ module.exports = function(req, res, next){
    if (util.isNone(deviceId) || util.isNone(accessToken)) {
       // fill payload error
       var error = appError.get("MISSING_HEADER", req);
-      var pack  = new appPayload(null, error.code, error.text).pack();
+      var payload = new Payload(null, error.code, error.text);
 
-      res.send(400, pack);
+      res.send(400, payload.pack());
       return next();
    }
 
@@ -24,8 +24,9 @@ module.exports = function(req, res, next){
       // authorized?
       if (!data.token || !data.tokenEmail || !accessToken || data.token !== accessToken) {
          var error = appError.get("AUTHORIZATION", req);
-         var pack  = new appPayload(null, error.code, error.text).pack();
-         res.send(401, pack);
+         var payload = new Payload(null, error.code, error.text);
+
+         res.send(401, payload.pack());
          return next();
       }
 
@@ -37,26 +38,26 @@ module.exports = function(req, res, next){
 
             // fill payload error
             var error = appError.get("", req);
-            var pack  = new appPayload(null, error.code, error.text).pack();
+            var payload = new Payload(null, error.code, error.text);
 
-            res.send(500, pack);
+            res.send(500, payload.pack());
             return next();
          }
 
          if (data == null) {
             var error = appError.get("LOGIN_MATCH", req);
-            var pack  = new appPayload(null, error.code, error.text).pack();
+            var payload = new Payload(null, error.code, error.text);
 
-            res.send(404, pack);
-            next();
+            res.send(404, payload.pack());
+            return next();
          } else {
-            pack = new appPayload({
+            var payload = new Payload({
                "id": data.doc.id,
                "email": data.doc.email
-            }).pack();
+            });
 
-            res.send(200, pack);
-            next();
+            res.send(200, payload.pack());
+            return next();
          }
       });
    });

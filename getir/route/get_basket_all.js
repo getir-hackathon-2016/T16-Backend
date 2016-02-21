@@ -41,7 +41,8 @@ module.exports = function(req, res, next){
                   && row.doc.access_token == accessToken
                ) {
                   items.push({
-                     "id": row.doc._id,
+                     "_id": row.doc._id,
+                     "id": row.doc.id,
                      "name": row.doc.name,
                      "price": row.doc.price,
                      "image": row.doc.image,

@@ -24,9 +24,9 @@ module.exports = function(req, res, next){
    if (util.isNone(id)) {
       // fill payload error
       var error = appError.get("MISSING_PARAM", req);
-      var pack  = new appPayload(null, error.code, error.text).pack();
+      var payload = new Payload(null, error.code, error.text);
 
-      res.send(400, pack);
+      res.send(400, payload.pack());
       return next();
    }
 
@@ -45,7 +45,8 @@ module.exports = function(req, res, next){
          if (row && row.doc) {
             data = {
                "item": {
-                  "id": row.doc._id,
+                  "_id": row.doc._id,
+                  "id": row.doc.id,
                   "name": row.doc.name,
                   "price": row.doc.price,
                   "image": row.doc.image,

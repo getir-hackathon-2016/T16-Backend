@@ -1,13 +1,15 @@
 var fs = require("fs");
-var appPayload = require("./app_payload.js");
 var appError = require("./app_error.js");
+
+var Payload = require("./app_payload.js");
 
 module.exports = {
    root: function(req, res, next){
       // fill payload error
       var error = appError.get("NO_ROUTE", req);
-      var pack  = new appPayload(null, error.code, error.text).pack();
-      res.send(404, pack);
+      var payload = new Payload(null, error.code, error.text);
+
+      res.send(404, payload.pack());
       return next();
    }
 };
