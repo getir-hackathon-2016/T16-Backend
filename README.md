@@ -35,12 +35,23 @@ Notice: Excepting `/login`, all endpoints require `X-Access-Token` header with a
 
 `GET /login`
 
-#### Request Parameters
+#### Request Body
 
 | Name     | Type    | Required  | Description |
 | -------- | ------- | --------- | ----------- |
 | email    | String  | Yes       | Client's email address. |
 | password | String  | Yes       | -           |
 
+#### Response Body
 
-
+```json
+{
+   "error": {
+      "code": 0,
+      "text": ""
+   },
+   "data": {
+      "access_token": "a9d846ab00a357e169b708c3ea5e53a4"
+   }
+}
+```
