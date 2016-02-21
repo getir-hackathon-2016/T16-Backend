@@ -18,7 +18,7 @@ server.use(restify.acceptParser(server.acceptable));
 // @debug stream logger
 server.on("after", function(req, res, route, err){
    // request stream
-   console.log("\r\n%s %s", req.method, req.url);
+   console.log("\r\n%s %s HTTP/%s", req.method, req.url, req.httpVersion);
    for (var name in req.headers) {
       if (name == "user-agent") {
          continue;
