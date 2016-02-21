@@ -15,6 +15,25 @@ server.use(restify.queryParser());
 server.use(restify.authorizationParser());
 server.use(restify.acceptParser(server.acceptable));
 
+// @debug stream logger
+server.pre(function(req, res, next){
+   console.log("%s %s", req.method, req.url);
+   for (var name in req.headers) {
+      console.log("%s%s: %s", name.substring(0,1).toUpperCase(),
+         name.substring(1).replace(/-[a-z]/g, function(char){
+            return char.toUpperCase();
+         }), req.headers[name]);
+   };
+   console.log("");
+   if (req.body) {
+      if (typeof req.body == "object") {
+         console.log("%s", JSON.stringify(req.body));
+      } else {
+         console.log("%s", req.body);
+      }
+   }
+});
+
 // register routes
 server.get("/", app.Route.root);
 server.get("/init", app.Route.get_init);
