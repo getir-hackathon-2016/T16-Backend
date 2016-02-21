@@ -4,6 +4,10 @@ T16-Backend is a broker interface that responsible to handle each messaging stre
 
 This document shows the all rescource URL's that implemented and responded only for now.
 
+## Base URL
+
+`http://qeremy.com:3000`
+
 ## Endpoints
 
 ### Authorization
