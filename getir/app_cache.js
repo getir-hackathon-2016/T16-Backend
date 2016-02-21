@@ -1,9 +1,5 @@
-var memcache = require("./util/memcache");
-var client = new memcache.Client();
-client.on("connect", function(){
-   console.log("Connected to Memcache.")
-});
-client.connect();
+var util = require("./util/util.js");
+var client = util.CacheClient();
 
 // time to live in secs (1 day)
 var TTL = 86400;
