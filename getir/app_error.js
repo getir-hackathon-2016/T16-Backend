@@ -6,27 +6,35 @@ var error = {
          "tr": "Tanımlanmamış hata."
       }
    },
-   "MISSING_HEADER": {
-      "code": 101,
-      "text": {
-         "en": "Missing header.",
-         "tr": "Eksik başlık."
-      }
-   },
-   "AUTHORIZATION": {
-      "code": 102,
-      "text": {
-         "en": "Unauthorized request.",
-         "tr": "Yetkisiz istek."
-      }
-   },
    "NO_ROUTE": {
-      "code": 103,
+      "code": 101,
       "text": {
          "en": "No route found.",
          "tr": "Yol bulunamadı."
       }
    },
+   "MISSING_HEADER": {
+      "code": 102,
+      "text": {
+         "en": "Missing header.",
+         "tr": "Eksik başlık."
+      }
+   },
+   "MISSING_PARAM": {
+      "code": 103,
+      "text": {
+         "en": "Missing parameter.",
+         "tr": "Eksik parametre."
+      }
+   },
+   "AUTHORIZATION": {
+      "code": 104,
+      "text": {
+         "en": "Unauthorized request.",
+         "tr": "Yetkisiz istek."
+      }
+   },
+
    "LOGIN_EMPTY": {
       "code": 200,
       "text": {
