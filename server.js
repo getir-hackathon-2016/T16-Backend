@@ -18,7 +18,7 @@ server.use(restify.acceptParser(server.acceptable));
 // @debug stream logger
 server.on("after", function(req, res, route, err){
    // request stream
-   console.log("%s %s", req.method, req.url);
+   console.log("\r\n%s %s", req.method, req.url);
    for (var name in req.headers) {
       console.log("%s%s: %s", name.substring(0,1).toUpperCase(),
          name.substring(1).replace(/-[a-z]/g, function(char){
@@ -35,7 +35,7 @@ server.on("after", function(req, res, route, err){
    }
    console.log("");
    // response stream
-   console.log("%s%s", res._header, res._data || "");
+   console.log("%s%s\r\n", res._header, res._data || "");
 });
 
 // register routes
