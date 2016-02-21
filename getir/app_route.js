@@ -16,7 +16,11 @@ files.forEach(function(file){
    // use file name as route handler
    module.exports[fileName] = require(filePath);
 
-   fileName = fileName.split("_")
+   fileName = fileName.split("_", 2);
    console.log("Registering route: '%s /%s' from '%s'.",
-      fileName[0].toUpperCase(), fileName[1], filePath)
+      // do: get_productList => GET
+      // do: productList     => product-list
+      fileName[0].toUpperCase(), fileName[1].replace(/[A-Z]/g, function(char){
+         return "-"+ char.toLowerCase();
+      }), filePath);
 });
