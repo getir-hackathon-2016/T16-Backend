@@ -19,19 +19,25 @@ function dig(object, key) {
       : object[key];
 }
 
-function isNone(input){
+function isNone(input) {
    return (input == null || input.trim() === "");
 }
 
-function CacheClient(){
+function CacheClient() {
    var memcache = require("./memcache.js");
    var client = new memcache.Client();
-   client.on("connect", function(){
-      console.log("Connected to Memcache.");
-   });
+
+   if (!CacheClient.connected) {
+      CacheClient.connected = true;
+      client.on("connect", function(){
+         console.log("Connected to Memcache.");
+      });
+   }
    client.connect();
+
    return client;
 }
+CacheClient.connected = false;
 
 module.exports = {
    trim: trim,
