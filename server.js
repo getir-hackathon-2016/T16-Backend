@@ -35,7 +35,7 @@ server.on("after", function(req, res, route, err){
    }
    console.log("");
    // response stream
-   console.log(res._header, res._data || "");
+   console.log("%s%s", res._header, res._data || "");
 });
 
 // register routes
